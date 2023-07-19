@@ -144,3 +144,26 @@ img {
  border-radius: 10px;
  font-size: 25px;
 }
+
+@media screen and (max-width: 425px) {
+
+h1 {
+  width: 350px;
+}
+
+button {
+  width: 110px;
+  height: 110px;
+  background-size: 70px;
+}
+
+.score {
+width: 180px;
+font-size: 30px;
+margin-top: 80px;
+}
+
+}
+
+
+
