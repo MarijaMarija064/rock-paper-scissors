@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock paper scisssors</title>
+    <link rel="stylesheet" href="rock-paper-scissors.css" />
+    <script src="rock-paper-scissors.js"></script>
+  </head>
+  <body>
+    <h1>Rock paper scissors</h1>
+    <div class="buttonsHidden">
+    <button
+        class="rock"
+        onclick="
+        var playerMove = 'rock';
+        playGame(playerMove);
+"
+  ></button>
+
+    <button
+        class="paper"
+        onclick="
+        var playerMove = 'paper';
+        playGame(playerMove);
+      "
+  ></button>
+
+    <button
+        class="scissors"
+        onclick="
+        var playerMove = 'scissors';
+        playGame(playerMove);
+      "
+  ></button>
+    </div>
+
+
+    <div class="modalBackgroundOf">
+    <div class="modal">
+      <div id="modalContent"></div>
+      <button class="close" onclick="closeModal()">X</button>
+
+
+    </div>
+  </div>
+
+
+    <div class="score">
+      <div class="wins">Wins: 0</div>
+      <div class="losses">Losses: 0</div>
+      <div class="tie">Tie: 0</div>
+      <div><button class="reset" onclick="
+      
+      resetScore();
+      
+      ">Reset</button></div>
+    </div>
+
+ 
+
+    <script>
+
+window.addEventListener('DOMContentLoaded', function() {
+        var myDiv = document.querySelector('.buttonsHidden');
+        myDiv.classList.remove('buttonsHidden')
+        myDiv.classList.add('buttons')
+
+});
+
+
+      const score = {
+        wins: 0,
+        losses: 0,
+        tie: 0
+      }
+
+      var wins = document.querySelector('.wins')
+      var losses = document.querySelector('.losses')
+      var tie = document.querySelector('.tie')
+
+      var modal = document.querySelector('.modalBackgroundOf')
+      var modalContent = document.getElementById('modalContent')
+      var img = document.createElement('img')
+      var src = document.getElementById('modalContent')
+
+      function playGame(playerMove) {
+        var result = ''
+        var randomNumber = Math.random()
+        var computerMove = ''
+
+        if (randomNumber >= 0 && randomNumber < 1 / 3) {
+          computerMove = 'rock'
+        } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+          computerMove = 'paper'
+        } else {
+          computerMove = 'scissors'
+        }
+
+        if (computerMove === 'rock' && playerMove === 'rock') {
+          result = 'Tie.'
+        } else if (computerMove === 'rock' && playerMove === 'paper') {
+          result = 'You win.'
+        } else if (computerMove === 'rock' && playerMove === 'scissors') {
+          result = 'You lose.'
+        } else if (computerMove === 'paper' && playerMove === 'rock') {
+          result = 'You lose.'
+        } else if (computerMove === 'paper' && playerMove === 'paper') {
+          result = 'Tie.'
+        } else if (computerMove === 'paper' && playerMove === 'scissors') {
+          result = 'You win.'
+        } else if (computerMove === 'scissors' && playerMove === 'rock') {
+          result = 'You win.'
+        } else if (computerMove === 'scissors' && playerMove === 'paper') {
+          result = 'You lose.'
+        } else if (computerMove === 'scissors' && playerMove === 'scissors') {
+          result = 'Tie.'
+        }
+
+        changeClassName()
+
+        modalContent.textContent = `You picked ${playerMove}. Computer picked ${computerMove}. ${result}`
+
+
+        if (result === 'Tie.') {
+          img.src = './assets/tie.png'
+          src.appendChild(img)
+        } else if (result === 'You lose.') {
+          img.src = './assets/lose.png'
+          src.appendChild(img)
+        } else if (result === 'You win.') {
+          img.src = './assets/win.png'
+          src.appendChild(img)
+        }
+
+        function changeScore() {
+          if (result === 'Tie.') {
+            score.tie += 1
+            tie.textContent = `Ties: ${score.tie}`
+          } else if (result === 'You lose.') {
+            score.losses += 1
+            losses.textContent = `Losses: ${score.losses}`
+          } else if (result === 'You win.') {
+            score.wins += 1
+            wins.textContent = `Wins: ${score.wins}`
+          }
+        }
+        changeScore()
+      }
+
+      function changeClassName() {
+        modal.classList.remove('modalBackgroundOf')
+        modal.classList.add('modalBackgroundOn')
+      }
+
+      function closeModal() {
+        modal.classList.remove('modalBackgroundOn')
+        modal.classList.add('modalBackgroundOf')
+      }
+    
+      function resetScore() {
+        score.tie = 0;
+        tie.textContent = `Ties: ${score.tie}`
+        score.losses = 0;
+        losses.textContent = `Losses: ${score.losses}`
+        score.wins = 0;
+        wins.textContent = `Wins: ${score.wins}`
+      }
+    
+    </script>
+  </body>
+</html>
