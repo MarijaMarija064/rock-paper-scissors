@@ -111,7 +111,7 @@ background-color: wheat;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 30px;
+  font-size: 1.7rem;
   padding:30px;
   margin-right:50px;
 }
@@ -147,6 +147,7 @@ img {
 
 @media screen and (max-width: 425px) {
 
+
 h1 {
   width: 350px;
 }
@@ -158,12 +159,39 @@ button {
 }
 
 .score {
-width: 180px;
-font-size: 30px;
+width: 160px;
+font-size: 25px;
 margin-top: 80px;
 }
 
+.reset {
+  width: 120px;
+  font-size: 25px;
 }
 
+.modal {
+  width: 300px;
+  height: 150px;
+}
+
+
+#modalContent {
+  font-size: 1rem;
+}
+
+#modalContent > img {
+  width: 50px;
+  margin-top: 0px;
+}
+
+
+.close {
+    top: -196px;
+    left: 241px;
+    height: 30px;
+    width: 30px;
+}
+
+}
 
 
