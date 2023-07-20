@@ -147,6 +147,11 @@ img {
 
 @media screen and (max-width: 425px) {
 
+  body {
+    background-size: cover;
+    background-position: center;
+  } 
+
 
 h1 {
   width: 350px;
